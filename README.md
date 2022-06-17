@@ -10,6 +10,7 @@ The pipelines that followed in this study were
 - Kraken2 (https://ccb.jhu.edu/software/kraken2/)
 - MIDAS (https://github.com/snayfach/MIDAS)
 - InStrain (https://instrain.readthedocs.io/en/latest/)
+- HAllA (https://huttenhower.sph.harvard.edu/halla/)
 
 
 Data and Code Availability
