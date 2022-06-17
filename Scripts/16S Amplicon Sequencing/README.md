@@ -1,0 +1,1 @@
+This contains the scripts and some microbial 16S data to plot the figures from the manuscript. 16S rRNA amplicon sequencing dataset with processed files and the entire details of used samples can be downloaded using the following link: https://figshare.com/s/077130437ca8ac314386 (DOI: 10.6084/m9.figshare.19483346). No new code was developed in this study.
