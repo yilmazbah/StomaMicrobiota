@@ -564,3 +564,40 @@ mem_rt_4 <- lmer(Diversity ~ TimePoint + BMI + Antibiotic + (1|PatientID) + (1|G
 coef(summary(mem_rt_4))
 head(coef(mem_rt_4)$PatientID)
 summary(mem_rt_4)
+                               
+                               
+### CRC vs CD comparison
+# Calling metadata and bacteria file
+input_data_bacteria = read.table("bacteria.txt", header=TRUE,row.names="sample")
+input_metadata = read.table("CD_CRC_metadata.txt", header=TRUE,row.names="sample")
+
+# Calling subseting the metadata for Ileostoma analysis
+input_metadata_subset <- input_metadata  %>%  
+  tibble::rownames_to_column('sample') %>% 
+  dplyr::filter(Col_Ile %in% c("Ileostoma"))  %>% 
+  tibble::column_to_rownames('sample')
+
+input_data<-select(input_metadata_subset,Diagnosis_v3,Age,Gender,BMI_Categorized,Smoking_Status,Antibiotics_3months)
+
+fit_data <- Maaslin2(
+  input_data_bacteria, input_data, 'CD_CRC_Ileostoma',transform = "LOG",normalization="CSS", min_abundance=0.0000001, min_prevalence=0.1,max_significance=0.2,
+  fixed_effects = c('Diagnosis_v3', 'Gender', 'Sample_Style','BMI','Age'),
+  random_effects = c('Smoking_Status', 'Antibiotics_3months'),
+  standardize = FALSE)
+
+
+
+# Calling subseting the metadata for Colostoma analysis
+input_metadata_subset <- input_metadata  %>%  
+  tibble::rownames_to_column('sample') %>% 
+  dplyr::filter(Col_Ile %in% c("Colostoma"))  %>% 
+  tibble::column_to_rownames('sample')
+
+input_data<-select(input_metadata_subset,Diagnosis_v3,Age,Gender,BMI_Categorized,Smoking_Status,Antibiotics_3months)
+
+fit_data <- Maaslin2(
+  input_data_bacteria, input_data, 'CD_CRC_Colostoma',transform = "LOG",normalization="CSS", min_abundance=0.000001, min_prevalence=0.1,max_significance=0.2,
+  fixed_effects = c('Diagnosis_v3', 'Gender', 'Sample_Style','BMI','Age'),
+  random_effects = c('Smoking_Status', 'Antibiotics_3months'),
+  standardize = FALSE)
+
