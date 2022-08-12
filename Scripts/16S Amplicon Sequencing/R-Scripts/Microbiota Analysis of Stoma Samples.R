@@ -554,13 +554,13 @@ library(lme4)
 library(lmerTest)  # Note, we might have to install this first! 
 
 pn_long <- read_csv("AlphaDiversityRectumContent.csv")
-mem_rt_4 <- lmer(Diversity ~ TimePoint + BMI + Antibiotic + (1|PatientID) + (1|Gender) + (1|SmokingStatus), data = pn_long)
+mem_rt_4 <- lmer(Diversity ~ TimePoint + BMI + Antibiotic + Gender + (1|PatientID) + (1|SmokingStatus), data = pn_long)
 coef(summary(mem_rt_4))
 head(coef(mem_rt_4)$PatientID)
 summary(mem_rt_4)
 
 pn_long <- read_csv("AlphaDiversityIleum.csv")
-mem_rt_4 <- lmer(Diversity ~ TimePoint + BMI + Antibiotic + (1|PatientID) + (1|Gender) + (1|SmokingStatus), data = pn_long)
+mem_rt_4 <- lmer(Diversity ~ TimePoint + BMI + Antibiotic + Gender + (1|PatientID) + (1|SmokingStatus), data = pn_long)
 coef(summary(mem_rt_4))
 head(coef(mem_rt_4)$PatientID)
 summary(mem_rt_4)
