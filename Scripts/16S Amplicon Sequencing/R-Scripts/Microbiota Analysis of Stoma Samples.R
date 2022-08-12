@@ -211,7 +211,7 @@ input_data_bacteria = read.table("bacteria.txt", header=TRUE,row.names="sample")
 input_metadata = read.table("data_CRC.txt", header=TRUE,row.names="sample")
 
 fit_data <- Maaslin2(
-  input_data_bacteria, input_metadata, 'CRC_relativeAbundance', transform = "LOG",normalization="CSS", max_significance=0.2, min_abundance=0.00000001, min_prevalence=0.1,
+  input_data_bacteria, input_metadata, 'CRC_relativeAbundance', transform = "LOG",normalization="CLR", max_significance=0.2, min_abundance=0.00000001, min_prevalence=0.1,
   fixed_effects = c('Gender','Col_Ile', 'Sample_Style'),
   random_effects = c('Smoking_Status', 'Antibiotics_3months', 'BMI_Categorized','Age'),
   standardize = FALSE)
@@ -221,7 +221,7 @@ input_data_bacteria = read.table("bacteria_count.txt", header=TRUE,row.names="sa
 input_metadata = read.table("data_CRC.txt", header=TRUE,row.names="sample")
 
 fit_data <- Maaslin2(
-  input_data_bacteria, input_metadata, 'CRC_BacterialCount', transform = "LOG",normalization="CSS", max_significance=0.2, min_abundance=0.00000001, min_prevalence=0.1,
+  input_data_bacteria, input_metadata, 'CRC_BacterialCount', transform = "LOG",normalization="CLR", max_significance=0.2, min_abundance=0.00000001, min_prevalence=0.1,
   fixed_effects = c('Gender','Col_Ile', 'Sample_Style'),
   random_effects = c('Smoking_Status', 'Antibiotics_3months', 'BMI_Categorized','Age'),
   standardize = FALSE)
@@ -580,7 +580,7 @@ input_metadata_subset <- input_metadata  %>%
 input_data<-select(input_metadata_subset,Diagnosis_v3,Age,Gender,BMI_Categorized,Smoking_Status,Antibiotics_3months)
 
 fit_data <- Maaslin2(
-  input_data_bacteria, input_data, 'CD_CRC_Ileostoma',transform = "LOG",normalization="CSS", min_abundance=0.0000001, min_prevalence=0.1,max_significance=0.2,
+  input_data_bacteria, input_data, 'CD_CRC_Ileostoma',transform = "LOG",normalization="CLR", min_abundance=0.0000001, min_prevalence=0.1,max_significance=0.2,
   fixed_effects = c('Diagnosis_v3', 'Gender', 'Sample_Style','BMI','Age'),
   random_effects = c('Smoking_Status', 'Antibiotics_3months'),
   standardize = FALSE)
@@ -596,7 +596,7 @@ input_metadata_subset <- input_metadata  %>%
 input_data<-select(input_metadata_subset,Diagnosis_v3,Age,Gender,BMI_Categorized,Smoking_Status,Antibiotics_3months)
 
 fit_data <- Maaslin2(
-  input_data_bacteria, input_data, 'CD_CRC_Colostoma',transform = "LOG",normalization="CSS", min_abundance=0.000001, min_prevalence=0.1,max_significance=0.2,
+  input_data_bacteria, input_data, 'CD_CRC_Colostoma',transform = "LOG",normalization="CLR", min_abundance=0.000001, min_prevalence=0.1,max_significance=0.2,
   fixed_effects = c('Diagnosis_v3', 'Gender', 'Sample_Style','BMI','Age'),
   random_effects = c('Smoking_Status', 'Antibiotics_3months'),
   standardize = FALSE)
