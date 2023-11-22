@@ -1,7 +1,7 @@
 # StomaMicrobiota
 Plasticity of the adult human small intestinal stoma microbiota
 
-The script and data deposited in this repository are the representative the analysis that we have run in our manuscript which is published in .... in 2022. Link to manuscript:  
+The script and data deposited in this repository are representative of the analysis that we have run in our manuscript which is published in Cell Host and Microbe in 2022. Link to manuscript: https://www.cell.com/cell-host-microbe/pdf/S1931-3128(22)00515-7.pdf  
 
 The pipelines that were followed in this study are
 - QIIME (http://qiime.org)
